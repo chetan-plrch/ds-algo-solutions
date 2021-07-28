@@ -29,6 +29,37 @@ const binaryTree2 = () => {
     return b;
 }
 
+const binaryTree3 = () => {
+    // Perfect binary tree example
+    const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7];
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    });
+    
+    return b;
+}
+
+const binaryTree4 = () => {
+    // Skewed binary tree example
+    const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7];
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    });
+    
+    // Level 2 right subtree removed
+    b.setValueAtIndex(2, undefined);
+
+    // Level 3 right subtree removed
+    b.setValueAtIndex(4, undefined);
+
+    // Level 4 right subtree removed
+    b.setValueAtIndex(8, undefined);
+
+    return b;
+}
+
 class Examples {
     getBinaryTree(num) {
         if(!num) {
@@ -38,7 +69,9 @@ class Examples {
         } else if(num === 2) {
             return binaryTree2();
         } else if(num === 3) {
-            // return binaryTree3();
+            return binaryTree3();
+        } else if(num === 4) {
+            return binaryTree4();
         }
     }
 }

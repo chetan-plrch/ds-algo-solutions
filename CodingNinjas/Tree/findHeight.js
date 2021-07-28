@@ -15,6 +15,6 @@ const findHeight = (root, height) => {
     return 0;
 }
 
-const bTree = new Examples().getBinaryTree(2);
+const bTree = new Examples().getBinaryTree(4);
 const bTreeRoot = bTree.getRootNode();
 console.log(findHeight(bTreeRoot, 1));
