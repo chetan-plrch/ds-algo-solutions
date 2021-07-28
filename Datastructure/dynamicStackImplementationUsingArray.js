@@ -1,6 +1,7 @@
 class Stack {
     store = null;
     front = -1;
+    counter = 0;
     constructor(size = 20) {
         if(size < 0) {
             throw new Error('Stack size cannot be negative');
@@ -76,6 +77,10 @@ class Stack {
 
     print() {
         console.log(this.store);
+    }
+
+    toArray() {
+        return this.store;
     }
 }
 

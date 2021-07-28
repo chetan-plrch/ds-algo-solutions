@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const { Stack } = require('../StacksandQueues/dynamicStackImplementationUsingArray');
+const { Stack } = require('../Datastructure/dynamicStackImplementationUsingArray');
 const {  getParentIndex, isLeftChild, isRightChild } = require('../utility/binaryTree')
 
 class BinaryTreeNode {
@@ -15,19 +15,27 @@ class BinaryTreeNode {
 }
 
 class BinaryTree {
-    store = null;
+    treeStack = null;
 
     constructor(capacity) {
-        this.store = new Stack(capacity);
+        this.treeStack = new Stack(capacity);
+    }
+
+    getRootNode() {
+        return this.treeStack.bottom();
+    }
+
+    toArray() {
+        return this.treeStack.toArray();
     }
 
     insert(val) {
         let node = new BinaryTreeNode(val);
-        this.store.push(node);
+        this.treeStack.push(node);
 
-        if(this.store.size() > 1) {
-            let parentIndex = getParentIndex(this.store.size() - 1);
-            let parent = this.store.getValueAtIndex(parentIndex);
+        if(this.treeStack.size() > 1) {
+            let parentIndex = getParentIndex(this.treeStack.size() - 1);
+            let parent = this.treeStack.getValueAtIndex(parentIndex);
 
             if(!parent.left) {
                 parent.left = node;
@@ -38,7 +46,7 @@ class BinaryTree {
     }
 
     traversePreOrder() {
-        const root = this.store.bottom();
+        const root = this.treeStack.bottom();
         this.preOrder(root);
     }
 
@@ -51,7 +59,7 @@ class BinaryTree {
     }
 
     traverseInOrder() {
-        const root = this.store.bottom();
+        const root = this.treeStack.bottom();
         this.inOrder(root);
     }
 
@@ -64,7 +72,7 @@ class BinaryTree {
     }
 
     traversePostOrder() {
-        const root = this.store.bottom();
+        const root = this.treeStack.bottom();
         this.postOrder(root);
     }
 
@@ -77,7 +85,7 @@ class BinaryTree {
     }
 
     traverseLevelOrder() {
-        let root = this.store.bottom();
+        let root = this.treeStack.bottom();
         let count = 0;
         let fact = 0;
         const q = new Queue();
@@ -106,7 +114,7 @@ class BinaryTree {
         let result = [];
         m.set('max', Number.MIN_SAFE_INTEGER);
         m.set('min', Number.MAX_VALUE);
-        this.verticalOrder(this.store.bottom(), 0, m);
+        this.verticalOrder(this.treeStack.bottom(), 0, m);
 
         for(let i = m.get('min'); i <= m.get('max'); i++) {
             result.push(m.get(i).split('.').sort((a, b) => a - b));
@@ -143,21 +151,21 @@ class BinaryTree {
     }
 
     getLeftChildByParentIndex(pIdx) {
-        if(this.store.getValueAtIndex(pIdx))
-            return this.store.getValueAtIndex(pIdx).left;
+        if(this.treeStack.getValueAtIndex(pIdx))
+            return this.treeStack.getValueAtIndex(pIdx).left;
     }
 
     getRightChildByParentIndex(pIdx) {
-        if(this.store.getValueAtIndex(pIdx))
-            return this.store.getValueAtIndex(pIdx).right;
+        if(this.treeStack.getValueAtIndex(pIdx))
+            return this.treeStack.getValueAtIndex(pIdx).right;
     }
 
     getParentNodeByChildIndex(cIdx) {
-        return this.store.getValueAtIndex(getParentIndex(cIdx));
+        return this.treeStack.getValueAtIndex(getParentIndex(cIdx));
     }
 
     getValueAtIndex(idx) {
-        return this.store.getValueAtIndex(idx);
+        return this.treeStack.getValueAtIndex(idx);
     }
 
     setValueAtIndex(cIdx, val) {
@@ -168,11 +176,15 @@ class BinaryTree {
             parent.right = val;
         }
 
-        return this.store.setValueAtIndex(cIdx, val);
+        return this.treeStack.setValueAtIndex(cIdx, val);
     }
 
     print() {
-        this.store.print();
+        this.treeStack.print();
+    }
+
+    printArray() {
+        this.treeStack.print();
     }
 }
 

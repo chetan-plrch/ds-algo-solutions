@@ -50,6 +50,14 @@ class Queue {
         }
     }
 
+    pop() {
+        if(this.isEmpty()) {
+            throw new Error('Queue is empty');
+        } else {
+            return this.store[--this.current];
+        }
+    }
+
     firstElement() {
         if(this.isEmpty()) {
             return null;

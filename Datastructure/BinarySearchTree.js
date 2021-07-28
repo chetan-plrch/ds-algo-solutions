@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const { Queue } = require('../StacksandQueues/dynamicQueueImplementationUsingArray');
+const { Queue } = require('./dynamicQueueImplementationUsingArray');
 const { BinaryTree, BinaryTreeNode } = require('./BinaryTree');
 
 // insert(key: T, value: U): BinarySearchTreeNode<T, U>;

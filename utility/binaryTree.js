@@ -18,10 +18,20 @@ const isRightChild = (childIndex) => {
     return (childIndex % 2) === 0;
 }
 
+const nodesAtLevel = (level) => {
+    return Math.pow(2, level);
+}
+
+const isLeafNode = (node) => {
+    return !(node.left || node.right);
+}
+
 module.exports = {
     getParentIndex,
     getLeftIndex,
     getRightIndex,
     isLeftChild,
-    isRightChild
+    isRightChild,
+    nodesAtLevel,
+    isLeafNode
 }
