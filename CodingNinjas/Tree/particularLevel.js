@@ -6,11 +6,21 @@
 
 const Examples = require("../../utility/examples");
 
-const particularLevel = (root, level) => {
-
+const particularLevel = (root, currentLevel, level, arr) => {
+    if(root) {
+        particularLevel(root.left, currentLevel+1, level, arr);
+        if(currentLevel === level)
+            arr.push(root.val);
+        particularLevel(root.right, currentLevel+1, level, arr);
+    }
 }
 
-const level = 3;
-const bTree = new Examples().getBinaryTree();
+const bTree = new Examples().getBinaryTree(4);
 const bTreeRoot = bTree.getRootNode();
-console.log(particularLevel(bTreeRoot, 3));
+
+const currentLevel = 1;
+const level = 1;
+const arr = [];
+
+particularLevel(bTreeRoot, currentLevel, level, arr)
+console.log(arr);

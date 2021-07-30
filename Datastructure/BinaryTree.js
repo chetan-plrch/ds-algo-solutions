@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const { Stack } = require('../Datastructure/dynamicStackImplementationUsingArray');
-const {  getParentIndex, isLeftChild, isRightChild } = require('../utility/binaryTree')
+const {  getParentIndex, isLeftChild, isRightChild } = require('../utility/binaryTree');
+const { Queue } = require('./dynamicQueueImplementationUsingArray');
 
 class BinaryTreeNode {
     val = null;
@@ -171,9 +172,21 @@ class BinaryTree {
     setValueAtIndex(cIdx, val) {
         const parent = this.getParentNodeByChildIndex(cIdx);
         if(isLeftChild(cIdx)) {
-            parent.left = val;
+            if(val === undefined) {
+                parent.left = undefined;
+            } else {
+                let node = parent.left;
+                let newNode = new BinaryTreeNode(val, node.left, node.right);
+                parent.left = newNode;
+            }
         } else if(isRightChild(cIdx)) {
-            parent.right = val;
+            if(val === undefined) {
+                parent.right = undefined;
+            } else {
+                let node = parent.right;
+                let newNode = new BinaryTreeNode(val, node.left, node.right);
+                parent.right = newNode;
+            }
         }
 
         return this.treeStack.setValueAtIndex(cIdx, val);

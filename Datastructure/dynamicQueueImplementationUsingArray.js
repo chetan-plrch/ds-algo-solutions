@@ -42,6 +42,10 @@ class Queue {
         }
     }
 
+    poll() {
+        return this.dequeue();
+    }
+
     dequeue() {
         if(this.isEmpty()) {
             throw new Error('Queue is empty');
@@ -82,7 +86,9 @@ class Queue {
     }
 
     print() {
-        console.log(this.store);
+        for(let i = this.front; i < this.current; i++) {
+            console.log(this.store[i]);
+        }
     }
 }
 

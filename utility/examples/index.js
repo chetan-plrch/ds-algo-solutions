@@ -18,6 +18,24 @@ const binaryTree1 = () => {
     return b;
 }
 
+const binaryTree5 = () => {
+    // Non-complete binary tree example, similar to binaryTree1 but with value change in roots
+    const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7];
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    });
+
+    b.setValueAtIndex(7, undefined);
+    b.setValueAtIndex(8, undefined);
+    b.setValueAtIndex(9, undefined);
+    b.setValueAtIndex(10, undefined);
+    b.setValueAtIndex(11, undefined);
+    b.setValueAtIndex(12, undefined);
+    
+    return b;
+}
+
 const binaryTree2 = () => {
     // Complete binary tree example
     const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7, 9, 45];
@@ -62,7 +80,7 @@ const binaryTree4 = () => {
 
 class Examples {
     getBinaryTree(num) {
-        if(!num) {
+        if(num === undefined) {
             return binaryTree1();
         } else if(num === 1) {
             return binaryTree1();
@@ -72,6 +90,8 @@ class Examples {
             return binaryTree3();
         } else if(num === 4) {
             return binaryTree4();
+        } else if(num === 5) {
+            return binaryTree5();
         }
     }
 }
