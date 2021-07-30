@@ -192,6 +192,33 @@ class BinaryTree {
         return this.treeStack.setValueAtIndex(cIdx, val);
     }
 
+    getPreorderOrder(root, arr = []) {
+        if(root) {
+            arr.push(root.val);
+            this.getPreorderOrder(root.left, arr);
+            this.getPreorderOrder(root.right, arr);
+        }
+        return arr;
+    }
+
+    getInorderOrder(root, arr = []) {
+        if(root) {
+            this.getInorderOrder(root.left, arr);
+            arr.push(root.val);
+            this.getInorderOrder(root.right, arr);
+        }
+        return arr;
+    }
+
+    getPostorderOrder(root, arr = []) {
+        if(root) {
+            this.getPostorderOrder(root.left, arr);
+            this.getPostorderOrder(root.right, arr);
+            arr.push(root.val);
+        }
+        return arr;
+    }
+
     print() {
         this.treeStack.print();
     }
