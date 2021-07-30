@@ -41,7 +41,7 @@ const areDiagonalAnagram = (rootA, rootB) => {
 // Same trees
 const bTreeA = new Examples().getBinaryTree();
 const bTreeARoot = bTreeA.getRootNode();
-// console.log('Are anagram', areDiagonalAnagram(bTreeARoot, bTreeARoot));
+console.log('Are anagram', areDiagonalAnagram(bTreeARoot, bTreeARoot));
 
 // Different trees
 const bTreeB = new Examples().getBinaryTree(5);

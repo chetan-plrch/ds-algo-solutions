@@ -46,7 +46,8 @@ const findInorderSuccessor2 = (root, key) => {
 }
 
 const findInorderSuccessor3 = (root, key) => {
-    // Using normal inorder recursion
+    // TODO: Understand the inordersuccessor solution of CodingNinjas for Approach 2
+    // TODO: CodingNinjas: Approach 2
 }
 
 function init() {
