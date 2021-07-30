@@ -45,7 +45,7 @@ const binaryTree6 = () => {
         23, 12, 99, 55, 23, 12, 99, 55,
         3, 1, 2, 4, 26, 25, 24, 7, 3, 1, 2, 4, 26, 25, 24, 7
     ];
-    
+
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -99,6 +99,28 @@ const binaryTree4 = () => {
     return b;
 }
 
+const binaryTree7 = () => {
+    // Single node tree
+    const arr = [67];
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    });
+    
+    return b;
+}
+
+const binaryTree8 = () => {
+    // Two node tree
+    const arr = [67, 50];
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    });
+    
+    return b;
+}
+
 class Examples {
     getBinaryTree(num) {
         if(num === undefined) {
@@ -115,6 +137,10 @@ class Examples {
             return binaryTree5();
         } else if(num === 6) {
             return binaryTree6();
+        } else if(num === 7) {
+            return binaryTree7();
+        } else if(num === 8) {
+            return binaryTree8();
         }
     }
 }

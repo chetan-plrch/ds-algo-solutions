@@ -16,6 +16,8 @@ const largestPath = (root) => {
 
     if (leftChild && rightChild) {
         return [leftChild.val, rightChild.val];
+    } else if(!leftChild && !rightChild && !store[1]) {
+        return [root.val, root.val];
     } else if(!leftChild && !rightChild) {
         return [store[1].val, store[1].val];
     } else if(leftChild) {
@@ -98,11 +100,42 @@ const maxSumToRoot = (root, m) => {
     return 0;
 }
 
-const bTree = new Examples().getBinaryTree(6);
+const bTree = new Examples().getBinaryTree();
 const bTreeRoot = bTree.getRootNode();
-
 bTree.traverseLevelOrder();
-
 console.log('Largest number:', largestPath(bTreeRoot));
 
-bTree.traverseLevelOrder();
+const bTree2 = new Examples().getBinaryTree(2);
+const bTree2Root = bTree2.getRootNode();
+bTree2.traverseLevelOrder();
+console.log('Largest number:', largestPath(bTree2Root));
+
+const bTree3 = new Examples().getBinaryTree(3);
+const bTree3Root = bTree3.getRootNode();
+bTree3.traverseLevelOrder();
+console.log('Largest number:', largestPath(bTree3Root));
+
+const bTree4 = new Examples().getBinaryTree(4);
+const bTree4Root = bTree4.getRootNode();
+bTree4.traverseLevelOrder();
+console.log('Largest number:', largestPath(bTree4Root));
+
+const bTree5 = new Examples().getBinaryTree(5);
+const bTree5Root = bTree5.getRootNode();
+bTree5.traverseLevelOrder();
+console.log('Largest number:', largestPath(bTree5Root));
+
+const bTree6 = new Examples().getBinaryTree(6);
+const bTree6Root = bTree6.getRootNode();
+bTree6.traverseLevelOrder();
+console.log('Largest number:', largestPath(bTree6Root));
+
+const bTree7 = new Examples().getBinaryTree(7);
+const bTree7Root = bTree7.getRootNode();
+bTree7.traverseLevelOrder();
+console.log('Largest number:', largestPath(bTree7Root));
+
+const bTree8 = new Examples().getBinaryTree(8);
+const bTree8Root = bTree8.getRootNode();
+bTree8.traverseLevelOrder();
+console.log('Largest number:', largestPath(bTree8Root));
