@@ -40,7 +40,7 @@ const binaryTree6 = () => {
     // Non-complete binary tree example, with only one node right subtree and lot more on left.
     const arr = [
         300,
-        67, 2,
+        67, 10,
         98, 90, 98, 90,
         23, 12, 99, 55, 23, 12, 99, 55,
         3, 1, 2, 4, 26, 25, 24, 7, 3, 1, 2, 4, 26, 25, 24, 7
