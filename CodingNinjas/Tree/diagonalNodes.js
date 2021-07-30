@@ -20,10 +20,14 @@ const diagonalNodes2 = (diagonal, root, hLevel, vLevel) => {
     if(root) {
         
         if(diagonal[hLevel - vLevel]) {
-            diagonal[hLevel - vLevel].add(root.val);
+            if(diagonal[hLevel - vLevel].has(root.val)) {
+                diagonal[hLevel - vLevel].set(root.val, diagonal[hLevel - vLevel].get(root.val) + 1);
+            } else {
+                diagonal[hLevel - vLevel].set(root.val, 1);
+            }
         } else {
-            diagonal[hLevel - vLevel] = new Set();
-            diagonal[hLevel - vLevel].add(root.val);
+            diagonal[hLevel - vLevel] = new Map();
+            diagonal[hLevel - vLevel].set(root.val, 1);
         }
 
         diagonalNodes2(diagonal, root.left, hLevel + 1, vLevel - 1);

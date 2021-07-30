@@ -51,9 +51,10 @@ const areDiagonalAnagram2 = (rootA, rootB) => {
         if((nodesA[key] === undefined) && (nodesB[key] === undefined)) {
             continue;
         } else if(nodesA[key].size === nodesB[key].size) {
-            for(let nodeVal of nodesA[key]) {
-                if(!nodesB[key].has(nodeVal))
+            for(let nodeVal of nodesA[key].keys()) {
+                if((!nodesB[key].has(nodeVal)) || (nodesA[key].get(nodeVal) !== nodesB[key].get(nodeVal))) {
                     return false;
+                }
             }
         } else {
             return false;
