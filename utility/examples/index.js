@@ -31,7 +31,7 @@ const binaryTree5 = () => {
     b.setValueAtIndex(9, undefined);
     b.setValueAtIndex(10, undefined);
     b.setValueAtIndex(11, undefined);
-    b.setValueAtIndex(12, undefined);
+    b.setValueAtIndex(12, 32);
     
     return b;
 }
