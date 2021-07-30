@@ -36,6 +36,27 @@ const binaryTree5 = () => {
     return b;
 }
 
+const binaryTree6 = () => {
+    // Non-complete binary tree example, with only one node right subtree and lot more on left.
+    const arr = [
+        300,
+        67, 2,
+        98, 90, 98, 90,
+        23, 12, 99, 55, 23, 12, 99, 55,
+        3, 1, 2, 4, 26, 25, 24, 7, 3, 1, 2, 4, 26, 25, 24, 7
+    ];
+    
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    });
+    
+    b.setValueAtIndex(5, undefined);
+    b.setValueAtIndex(6, undefined);
+
+    return b;
+}
+
 const binaryTree2 = () => {
     // Complete binary tree example
     const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7, 9, 45];
@@ -92,6 +113,8 @@ class Examples {
             return binaryTree4();
         } else if(num === 5) {
             return binaryTree5();
+        } else if(num === 6) {
+            return binaryTree6();
         }
     }
 }

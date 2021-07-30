@@ -14,8 +14,6 @@ const largestPath = (root) => {
     let leftChild = findMaxChild(store[1].left, m);
     let rightChild = findMaxChild(store[1].right, m);
 
-    console.log(leftChild, rightChild, store);
-
     if (leftChild && rightChild) {
         return [leftChild.val, rightChild.val];
     } else if(!leftChild && !rightChild) {
@@ -65,7 +63,6 @@ const findMaxNodes = (root, m, store) => {
 
 const findMaxChild = (root, m) => {
     if(root) {
-        console.log(root.val);
         if(binaryTree.isLeafNode(root)) {
             return root;
         } else if(!root.left) {
@@ -101,7 +98,7 @@ const maxSumToRoot = (root, m) => {
     return 0;
 }
 
-const bTree = new Examples().getBinaryTree(3);
+const bTree = new Examples().getBinaryTree(6);
 const bTreeRoot = bTree.getRootNode();
 
 bTree.traverseLevelOrder();

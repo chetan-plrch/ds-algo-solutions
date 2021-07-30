@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const { Stack } = require('../Datastructure/dynamicStackImplementationUsingArray');
-const {  getParentIndex, isLeftChild, isRightChild } = require('../utility/binaryTree');
+const { getParentIndex, isLeftChild, isRightChild } = require('../utility/binaryTree');
 const { Queue } = require('./dynamicQueueImplementationUsingArray');
 
 class BinaryTreeNode {
@@ -34,13 +34,13 @@ class BinaryTree {
         let node = new BinaryTreeNode(val);
         this.treeStack.push(node);
 
-        if(this.treeStack.size() > 1) {
+        if (this.treeStack.size() > 1) {
             let parentIndex = getParentIndex(this.treeStack.size() - 1);
             let parent = this.treeStack.getValueAtIndex(parentIndex);
 
-            if(!parent.left) {
+            if (!parent.left) {
                 parent.left = node;
-            } else if(!parent.right) {
+            } else if (!parent.right) {
                 parent.right = node;
             }
         }
@@ -52,7 +52,7 @@ class BinaryTree {
     }
 
     preOrder(root) {
-        if(root) {
+        if (root) {
             console.log(chalk.greenBright(root.val));
             this.preOrder(root.left);
             this.preOrder(root.right);
@@ -65,7 +65,7 @@ class BinaryTree {
     }
 
     inOrder(root) {
-        if(root) {
+        if (root) {
             this.inOrder(root.left);
             console.log(chalk.greenBright(root.val));
             this.inOrder(root.right);
@@ -78,7 +78,7 @@ class BinaryTree {
     }
 
     postOrder(root) {
-        if(root) {
+        if (root) {
             this.postOrder(root.left);
             this.postOrder(root.right);
             console.log(chalk.greenBright(root.val));
@@ -87,26 +87,33 @@ class BinaryTree {
 
     traverseLevelOrder() {
         let root = this.treeStack.bottom();
-        let count = 0;
-        let fact = 0;
-        const q = new Queue();
+        let q = new Queue();
         q.enqueue(root);
-        while(!q.isEmpty()) {
-            const nodeToUse = q.dequeue();
-            console.log(chalk.greenBright(nodeToUse.val));
+
+        let nextNodes = 0;
+        let currentNodes = 1;
+
+        while (!q.isEmpty()) {
+            const node = q.dequeue();
+            console.log(node.val);
             
-            if(nodeToUse.left)
-                q.enqueue(nodeToUse.left);
+            currentNodes--;
 
-            if(nodeToUse.right)
-                q.enqueue(nodeToUse.right);
+            if (node.left) {
+                q.enqueue(node.left);
+                nextNodes++;
+            }
 
-            if(count === fact) {
-                fact = fact === 0 ? 2 : fact * 2;
-                count = 0;
+            if (node.right) {
+                q.enqueue(node.right);
+                nextNodes++;
+            }
+
+            if (currentNodes === 0) {
+                currentNodes = nextNodes;
+                nextNodes = 0;
                 console.log();
             }
-            count++;
         }
     }
 
@@ -117,7 +124,7 @@ class BinaryTree {
         m.set('min', Number.MAX_VALUE);
         this.verticalOrder(this.treeStack.bottom(), 0, m);
 
-        for(let i = m.get('min'); i <= m.get('max'); i++) {
+        for (let i = m.get('min'); i <= m.get('max'); i++) {
             result.push(m.get(i).split('.').sort((a, b) => a - b));
         }
 
@@ -125,23 +132,23 @@ class BinaryTree {
     }
 
     verticalOrder(root, order, m) {
-        if(root) {
-            if(m.has(order)) {
+        if (root) {
+            if (m.has(order)) {
                 m.set(order, (m.get(order) + '.' + root.val));
             } else {
                 m.set(order, '' + root.val);
             }
 
-            if(order > m.get('max'))
+            if (order > m.get('max'))
                 m.set('max', order);
 
-            if(order < m.get('min'))
+            if (order < m.get('min'))
                 m.set('min', order);
 
-            if(root.left !== null)
+            if (root.left !== null)
                 this.verticalOrder(root.left, order - 1, m);
 
-            if(root.right !== null)
+            if (root.right !== null)
                 this.verticalOrder(root.right, order + 1, m);
         }
         return m;
@@ -152,12 +159,12 @@ class BinaryTree {
     }
 
     getLeftChildByParentIndex(pIdx) {
-        if(this.treeStack.getValueAtIndex(pIdx))
+        if (this.treeStack.getValueAtIndex(pIdx))
             return this.treeStack.getValueAtIndex(pIdx).left;
     }
 
     getRightChildByParentIndex(pIdx) {
-        if(this.treeStack.getValueAtIndex(pIdx))
+        if (this.treeStack.getValueAtIndex(pIdx))
             return this.treeStack.getValueAtIndex(pIdx).right;
     }
 
@@ -171,16 +178,16 @@ class BinaryTree {
 
     setValueAtIndex(cIdx, val) {
         const parent = this.getParentNodeByChildIndex(cIdx);
-        if(isLeftChild(cIdx)) {
-            if(val === undefined) {
+        if (isLeftChild(cIdx)) {
+            if (val === undefined) {
                 parent.left = undefined;
             } else {
                 let node = parent.left;
                 let newNode = new BinaryTreeNode(val, node.left, node.right);
                 parent.left = newNode;
             }
-        } else if(isRightChild(cIdx)) {
-            if(val === undefined) {
+        } else if (isRightChild(cIdx)) {
+            if (val === undefined) {
                 parent.right = undefined;
             } else {
                 let node = parent.right;
@@ -193,7 +200,7 @@ class BinaryTree {
     }
 
     getPreorderOrder(root, arr = []) {
-        if(root) {
+        if (root) {
             arr.push(root.val);
             this.getPreorderOrder(root.left, arr);
             this.getPreorderOrder(root.right, arr);
@@ -202,7 +209,7 @@ class BinaryTree {
     }
 
     getInorderOrder(root, arr = []) {
-        if(root) {
+        if (root) {
             this.getInorderOrder(root.left, arr);
             arr.push(root.val);
             this.getInorderOrder(root.right, arr);
@@ -211,7 +218,7 @@ class BinaryTree {
     }
 
     getPostorderOrder(root, arr = []) {
-        if(root) {
+        if (root) {
             this.getPostorderOrder(root.left, arr);
             this.getPostorderOrder(root.right, arr);
             arr.push(root.val);
