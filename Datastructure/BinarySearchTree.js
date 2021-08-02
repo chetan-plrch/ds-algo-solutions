@@ -18,26 +18,26 @@ const { BinaryTree, BinaryTreeNode } = require('./BinaryTree');
 // clear(): void;
 
 class BinarySearchTree extends BinaryTree {
+    constructor(capacity) {
+        super(capacity);
+    }
+
     insert(val) {
-        let root = this.store.bottom();
-        if(root === undefined) {
-            this.store.push(new BinaryTreeNode(val));
-        } else {
-            while(root) {
-                if(val >= root.val) {
-                    if(root.right === null) {
-                        root.right = new BinaryTreeNode(val);
-                        break;
-                    } else {
-                        root = root.right;
-                    }
+        let root = this.treeStack.bottom();
+        while (root) {
+            if (val >= root.val) {
+                if (root.right) {
+                    root = root.right;
                 } else {
-                    if(root.left === null) {
-                        root.left = new BinaryTreeNode(val);
-                        break;
-                    } else {
-                        root = root.left;
-                    }
+                    root.right = new BinaryTreeNode(val);
+                    root = null;
+                }
+            } else {
+                if (root.left) {
+                    root = root.left;
+                } else {
+                    root.left = new BinaryTreeNode(val);
+                    root = null;
                 }
             }
         }
@@ -45,12 +45,12 @@ class BinarySearchTree extends BinaryTree {
 
     search(val) {
         let root = this.store.bottom();
-        while(root) {
-            if(root.val === val) {
+        while (root) {
+            if (root.val === val) {
                 return root;
             }
 
-            if(val >= root.val) {
+            if (val >= root.val) {
                 root = root.right;
             } else {
                 root = root.left;

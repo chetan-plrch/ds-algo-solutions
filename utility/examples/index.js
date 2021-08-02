@@ -121,6 +121,46 @@ const binaryTree8 = () => {
     return b;
 }
 
+const binaryTree9 = () => {
+    // Mirror tree binaryTree9
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    })
+
+    return b;
+}
+
+const binaryTree10 = () => {
+    // Mirror tree binaryTree10
+    const arr = [1, 3, 2, 7, 6, 5, 4, -1, -1, -1, -1, -1, -1, 9, 8];
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    })
+
+    b.setValueAtIndex(7, undefined);
+    b.setValueAtIndex(8, undefined);
+    b.setValueAtIndex(9, undefined);
+    b.setValueAtIndex(10, undefined);
+    b.setValueAtIndex(11, undefined);
+    b.setValueAtIndex(12, undefined);
+
+    return b;
+}
+
+const binaryTree11 = () => {
+    // Symmentric tree
+    const arr = [1, 2, 2, 3, 4, 4, 3];
+    const b = new BinaryTree();
+    arr.forEach((ele) => {
+        b.insert(ele);
+    });
+
+    return b;
+}
+
 class Examples {
     getBinaryTree(num) {
         if(num === undefined) {
@@ -141,8 +181,14 @@ class Examples {
             return binaryTree7();
         } else if(num === 8) {
             return binaryTree8();
+        } else if(num === 9) {
+            return binaryTree9();
+        } else if(num === 10) {
+            return binaryTree10();
+        } else if(num === 11) {
+            return binaryTree11();
         }
     }
 }
 
-module.exports = Examples
+module.exports = Examples;
