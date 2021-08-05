@@ -26,6 +26,10 @@ const isLeafNode = (node) => {
     return !(node.left || node.right);
 }
 
+const hasOneChild = (node) => {
+    return ((!!node.left) ^ (!!node.right)) === 1;
+}
+
 module.exports = {
     getParentIndex,
     getLeftIndex,
@@ -33,5 +37,6 @@ module.exports = {
     isLeftChild,
     isRightChild,
     nodesAtLevel,
-    isLeafNode
+    isLeafNode,
+    hasOneChild
 }

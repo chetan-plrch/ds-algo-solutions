@@ -22,6 +22,10 @@ class BinaryTree {
         this.treeStack = new Stack(capacity);
     }
 
+    setRootNode(root) {
+        this.treeStack.push(root);
+    }
+
     getRootNode() {
         return this.treeStack.bottom();
     }
@@ -232,6 +236,10 @@ class BinaryTree {
 
     printArray() {
         this.treeStack.print();
+    }
+
+    size() {
+        return this.treeStack.size();
     }
 }
 
