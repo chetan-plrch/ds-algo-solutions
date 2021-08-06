@@ -80,30 +80,34 @@ class BinarySearchTree extends BinaryTree {
                 // Match with root
                 if(binaryTree.isLeafNode(root)) {
                     // Node to be deleted is leaf node
-                    return [true, null];
+                    return null;
                 } else if(binaryTree.hasOneChild(root)) {
                     // Node with one child
                     if(root.left)
-                        return [true, root.left];
+                        return root.left;
                     else if(root.right)
-                        return [true, root.right];
+                        return root.right;
                 } else {
                     // Node with two children
-                    // TODO: Implement delete for Node with two child   
+                    let minNode = root.right;
+                    
+                    while(minNode.left != null)
+                        minNode = minNode.left;
+                    
+                    root.val = minNode.val;
+                    root.right = this.delete(root.right, minNode.val);
+                    
+                    return root;
                 }
             } else {
                 // No match
-                const [lRemove, lNodeToReplaceWith] = this.delete(root.left, val);
-                const [rRemove, rNodeToReplaceWith] = this.delete(root.right, val);
+                root.left = this.delete(root.left, val);
+                root.right = this.delete(root.right, val);
 
-                if (lRemove)
-                    root.left = lNodeToReplaceWith;
-                
-                if (rRemove)
-                    root.right = rNodeToReplaceWith;
+                return root;
             }
         }
-        return [false, null];
+        return null;
     }
 
     removeLeafNode(root, val) {
@@ -174,6 +178,35 @@ class BinarySearchTree extends BinaryTree {
             }
         }
         return min;
+    }
+    
+    deleteA(root, val) {
+        if(root) {
+            if(root.val === val) {
+                if(binaryTree.isLeafNode(root)) {
+                    return null;
+                } else if(!root.left) {
+                    return root.right;
+                } else if(!root.right) {
+                    return root.left;
+                } else {
+                    let minNode = root.right;
+
+                    while(minNode.left != null)
+                        minNode = minNode.left;
+
+                    root.val = minNode.val;
+                    root.right = this.deleteA(root.right, minNode.val);
+
+                    return root;
+                }
+            } else {
+                root.left = this.deleteA(root.left, val);
+                root.right = this.deleteA(root.right, val);
+
+                return root;
+            }
+        }
     }
 
     lowerBound() { }
