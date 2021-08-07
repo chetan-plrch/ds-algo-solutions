@@ -1,4 +1,5 @@
 const { BinaryTree } = require("../../Datastructure/BinaryTree");
+const { BinarySearchTree } = require("../../Datastructure/BinarySearchTree");
 
 const binaryTree1 = () => {
     // Non-complete binary tree example
@@ -161,7 +162,37 @@ const binaryTree11 = () => {
     return b;
 }
 
+const binarySearchTree1 = () => {
+    // Binary search tree
+    const arr = [20, 10, 5, 15, 13, 35, 30, 42];
+    const bSearchTree = new BinarySearchTree();
+    
+    arr.forEach((ele) => {
+        bSearchTree.insert(ele);
+    });
+
+    return bSearchTree;
+}
+
+const binarySearchTree2 = () => {
+    // Invalid binary search tree using binary tree
+    const arr = [20, 10, 35, 5, 15, 30, 42, -1, -1, 13];
+    const bTree = new BinaryTree();
+    
+    arr.forEach((ele) => {
+        bTree.insert(ele);
+    });
+
+    bTree.setValueAtIndex(7, undefined);
+    bTree.setValueAtIndex(8, undefined);
+    bTree.setValueAtIndex(5, 19);
+
+    return bTree;
+}
+
 class Examples {
+    total = 13
+
     getBinaryTree(num) {
         if(num === undefined) {
             return binaryTree1();
@@ -187,7 +218,25 @@ class Examples {
             return binaryTree10();
         } else if(num === 11) {
             return binaryTree11();
+        } else if(num === 12) {
+            return binarySearchTree1();
+        } else if(num === 13) {
+            return binarySearchTree2();
         }
+    }
+
+    iterator() {
+        this[Symbol.iterator] = () => {
+            let i = 1;
+            return {
+                next: () => ({
+                    done: i > this.total,
+                    value: this.getBinaryTree(i++),
+                })
+            }
+        }
+
+        return this;
     }
 }
 

@@ -30,6 +30,32 @@ const hasOneChild = (node) => {
     return ((!!node.left) ^ (!!node.right)) === 1;
 }
 
+const getMinNode = (root1, root2) => {
+    if(root1 && root2) {
+        if(Math.min(root1.val, root2.val) === root1.val)
+            return root1;
+        return root2;
+    } else if(root1) {
+        return root1;
+    } else if(root2) {
+        return root2;
+    }
+    return null;
+}
+
+const getMaxNode = (root1, root2) => {
+    if(root1 && root2) {
+        if(Math.max(root1.val, root2.val) === root1.val)
+            return root1;
+        return root2;
+    } else if(root1) {
+        return root1;
+    } else if(root2) {
+        return root2;
+    }
+    return null;
+}
+
 module.exports = {
     getParentIndex,
     getLeftIndex,
@@ -38,5 +64,7 @@ module.exports = {
     isRightChild,
     nodesAtLevel,
     isLeafNode,
-    hasOneChild
+    hasOneChild,
+    getMinNode,
+    getMaxNode
 }
