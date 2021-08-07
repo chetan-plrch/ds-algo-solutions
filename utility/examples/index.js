@@ -190,8 +190,38 @@ const binarySearchTree2 = () => {
     return bTree;
 }
 
+const traversal = {
+    preOrder: [1, 2, 4, 7, 3],
+    inOrder: [4, 2, 7, 1, 3],
+    postOrder: [4, 7, 2, 3, 1],
+}
+
+const traversal2 = {
+    preOrder: [1, 2, 3],
+    inOrder: [2, 1, 3],
+    postOrder: [2, 3, 1]
+}
+
+const traversal3 = {
+    preOrder: [67, 98, 23, 3, 9, 45, 1, 12, 2, 4, 90, 99, 26, 25, 55, 24, 7],
+    inOrder: [9, 3, 45, 23, 1, 98, 2, 12, 4, 67, 26, 99, 25, 90, 24, 55, 7],
+    postOrder: [9, 45, 3, 1, 23, 2, 4, 12, 98, 26, 25, 99, 24, 7, 55, 90, 67]
+}
+
 class Examples {
     total = 13
+
+    getTraversal() {
+        if(num === undefined) {
+            return traversal;
+        } else if(num === 1) {
+            return traversal;
+        } else if(num === 2) {
+            return traversal2;
+        } else if(num === 3) {
+            return traversal3;
+        }
+    }
 
     getBinaryTree(num) {
         if(num === undefined) {
