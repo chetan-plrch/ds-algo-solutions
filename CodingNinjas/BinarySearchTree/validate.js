@@ -20,15 +20,8 @@ const validateBST = (root, isLeft) => {
         else if(rMin)
             isValidNode = binaryTree.getMaxNode(rMin, root) === rMin;
         
-        let isSubtreesValid = true;
-        if(lMax && rMin)
-            isSubtreesValid = lMaxValid && rMinValid;
-        else if(lMax)
-            isSubtreesValid = lMaxValid;
-        else if(rMin)
-            isSubtreesValid = rMinValid;
-        
-        let isValidTree = isValidNode && isSubtreesValid;
+        let areSubtreesValid = lMaxValid && rMinValid;
+        let isValidTree = isValidNode && areSubtreesValid;
 
         if(isLeft) {
             if(lMax && rMin) {
