@@ -3,7 +3,12 @@ const { BinarySearchTree } = require("../../Datastructure/BinarySearchTree");
 
 const binaryTree1 = () => {
     // Non-complete binary tree example
-    const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7];
+    const arr = [
+        67, 
+        98, 90, 
+        23, 12, 99, 55, 
+        3, 1, 2, 4, 26, 25, 24, 7
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -21,7 +26,12 @@ const binaryTree1 = () => {
 
 const binaryTree5 = () => {
     // Non-complete binary tree example, similar to binaryTree1 but with value change in roots
-    const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7];
+    const arr = [
+        67, 
+        98, 90, 
+        23, 12, 99, 55, 
+        3, 1, 2, 4, 26, 25, 24, 7
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -60,7 +70,13 @@ const binaryTree6 = () => {
 
 const binaryTree2 = () => {
     // Complete binary tree example
-    const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7, 9, 45];
+    const arr = [
+        67, 
+        98, 90, 
+        23, 12, 99, 55, 
+        3, 1, 2, 4, 26, 25, 24, 7, 
+        9, 45
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -71,7 +87,12 @@ const binaryTree2 = () => {
 
 const binaryTree3 = () => {
     // Perfect binary tree example
-    const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7];
+    const arr = [
+        67, 
+        98, 90, 
+        23, 12, 99, 55, 
+        3, 1, 2, 4, 26, 25, 24, 7
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -82,7 +103,12 @@ const binaryTree3 = () => {
 
 const binaryTree4 = () => {
     // Skewed binary tree example
-    const arr = [67, 98, 90, 23, 12, 99, 55, 3, 1, 2, 4, 26, 25, 24, 7];
+    const arr = [
+        67, 
+        98, 90, 
+        23, 12, 99, 55, 
+        3, 1, 2, 4, 26, 25, 24, 7
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -113,7 +139,10 @@ const binaryTree7 = () => {
 
 const binaryTree8 = () => {
     // Two node tree
-    const arr = [67, 50];
+    const arr = [
+        67, 
+        50
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -124,7 +153,12 @@ const binaryTree8 = () => {
 
 const binaryTree9 = () => {
     // Mirror tree binaryTree9
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const arr = [
+        1, 
+        2, 3, 
+        4, 5, 6, 7, 
+        8, 9
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -135,7 +169,12 @@ const binaryTree9 = () => {
 
 const binaryTree10 = () => {
     // Mirror tree binaryTree10
-    const arr = [1, 3, 2, 7, 6, 5, 4, -1, -1, -1, -1, -1, -1, 9, 8];
+    const arr = [
+        1, 
+        3, 2, 
+        7, 6, 5, 4, 
+        -1, -1, -1, -1, -1, -1, 9, 8
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
@@ -153,7 +192,11 @@ const binaryTree10 = () => {
 
 const binaryTree11 = () => {
     // Symmentric tree
-    const arr = [1, 2, 2, 3, 4, 4, 3];
+    const arr = [
+        1, 
+        2, 2, 
+        3, 4, 4, 3
+    ];
     const b = new BinaryTree();
     arr.forEach((ele) => {
         b.insert(ele);
