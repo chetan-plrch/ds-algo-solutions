@@ -62,6 +62,10 @@ class Queue {
         }
     }
 
+    peek() {
+        return this.firstElement();
+    }
+
     firstElement() {
         if(this.isEmpty()) {
             return null;

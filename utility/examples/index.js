@@ -251,10 +251,15 @@ const traversal3 = {
     postOrder: [9, 45, 3, 1, 23, 2, 4, 12, 98, 26, 25, 99, 24, 7, 55, 90, 67]
 }
 
+const bstTraversal4 = {
+    preOrder: [67, 23, 3, 1, 2, 9, 4, 7, 12, 45, 26, 25, 24, 55, 98, 90, 99],
+    postOrder: [2, 1, 7, 4, 12, 9, 3, 24, 25, 26, 55, 45, 23, 90, 99, 98, 67]
+}
+
 class Examples {
     total = 13
 
-    getTraversal() {
+    getTraversal(num) {
         if(num === undefined) {
             return traversal;
         } else if(num === 1) {
@@ -263,6 +268,8 @@ class Examples {
             return traversal2;
         } else if(num === 3) {
             return traversal3;
+        } else if(num === 4) {
+            return bstTraversal4;
         }
     }
 
