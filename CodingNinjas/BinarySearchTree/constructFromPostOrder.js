@@ -13,11 +13,8 @@ const construct = (ele, min, max, q) => {
     if(ele) {
         let node = null;
         if((ele > min) && (ele <= max)) {
-            node = new BinaryTreeNode(ele);
-            q.dequeue();
-        }
+            node = new BinaryTreeNode(q.dequeue());
 
-        if(node) {
             node.right = construct(q.peek(), Math.max(min, node.val), max, q);
             node.left = construct(q.peek(), min, Math.min(node.val, max), q);
         }

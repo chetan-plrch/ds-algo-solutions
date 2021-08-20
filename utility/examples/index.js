@@ -257,6 +257,11 @@ const bstTraversal4 = {
     levelOrder: [67, 23, 98, 3, 45, 90, 99, 1, 9, 26, 55, 2, 4, 12, 25, 7, 24]
 }
 
+const bstTraversal5 = {
+    preOrder: [20, 10, 5, 15, 13, 35, 30, 42],
+    postOrder: [5, 13, 15, 10, 30, 42, 35, 20]
+}
+
 class Examples {
     total = 13
 
@@ -271,6 +276,8 @@ class Examples {
             return traversal3;
         } else if(num === 4) {
             return bstTraversal4;
+        } else if(num === 5) {
+            return bstTraversal5
         }
     }
 

@@ -1,8 +1,9 @@
 const { BinarySearchTree } = require('../../Datastructure/BinarySearchTree');
+const Examples = require('../../utility/examples');
 
-const arr = [20, 10, 5, 15, 13, 35, 30, 42];
+const arr = new Examples().getTraversal(3).preOrder;
 
-arr.forEach((el, idx) => {
+// arr.forEach((el, idx) => {
     const bSearchTree = new BinarySearchTree();
 
     arr.forEach((ele) => {
@@ -11,9 +12,10 @@ arr.forEach((el, idx) => {
 
     const bSearchTreeRoot = bSearchTree.getRootNode();
 
-    console.log('----', idx);
-    bSearchTree.delete(bSearchTreeRoot, el);
+    // console.log('----', idx);
+    // bSearchTree.delete(bSearchTreeRoot, el);
     console.log('----');
+    bSearchTree.traversePreOrder();
     bSearchTree.traverseLevelOrder();
-    console.log('----', idx);
-})
+    // console.log('----', idx);
+// });
