@@ -56,6 +56,10 @@ const getMaxNode = (root1, root2) => {
     return null;
 }
 
+const getBaseLog = (x, y) => {
+    return Math.log(y) / Math.log(x);
+}
+
 module.exports = {
     getParentIndex,
     getLeftIndex,
@@ -66,5 +70,6 @@ module.exports = {
     isLeafNode,
     hasOneChild,
     getMinNode,
-    getMaxNode
+    getMaxNode,
+    getBaseLog
 }
