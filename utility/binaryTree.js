@@ -30,6 +30,14 @@ const hasOneChild = (node) => {
     return ((!!node.left) ^ (!!node.right)) === 1;
 }
 
+const hasOnlyLeftChild = (node) => {
+    return node.left && (!node.right);
+}
+
+const hasOnlyRightChild = (node) => {
+    return node.right && (!node.left);
+}
+
 const getMinNode = (root1, root2) => {
     if(root1 && root2) {
         if(Math.min(root1.val, root2.val) === root1.val)
@@ -71,5 +79,7 @@ module.exports = {
     hasOneChild,
     getMinNode,
     getMaxNode,
-    getBaseLog
+    getBaseLog,
+    hasOnlyLeftChild,
+    hasOnlyRightChild
 }
