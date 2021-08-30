@@ -44,13 +44,13 @@ class Stack {
         if(this.isEmpty()) {
             throw new Error('Stack is empty');
         } else {
-            this.front--;
+            return this.store[this.front--];
         }
     }
 
     peek() {
         if(this.isEmpty()) {
-            throw new Error('Stack is empty');
+            return null;
         } else {
             return this.store[this.front];
         }
