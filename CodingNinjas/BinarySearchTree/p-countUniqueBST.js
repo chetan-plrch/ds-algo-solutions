@@ -27,6 +27,6 @@ const calculate = (size, f) => {
     }
 }
 
-console.time("dbsave");
+console.time("latency");
 console.log('Count of unique BST', countUniqueBST(a));
-console.timeEnd("dbsave");
+console.timeEnd("latency");
