@@ -1,3 +1,7 @@
+/**
+ * Solution not required since the problem is easily solvable
+ */
+
 const Examples = require('../../utility/examples');
 
 const fixBST = (root) => {
