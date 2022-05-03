@@ -1,0 +1,25 @@
+1. Heap: Array representation
+    a. Construct a heap from set of inputs.
+    b. Parse the tree
+        a. In-order traversal
+        b. Post-order traversal
+        c. Pre-order traversal
+        d. Level order traversal.
+    c. Implement for heap
+        a. Insert
+        b. Delete
+        c. Heap sort
+        d. Heapify
+    d. Convert a tree to Heap from array.
+2. Heap: Node representation
+    a. Construct a heap from set of inputs.
+    b. Parse the tree
+        a. In-order traversal
+        b. Post-order traversal
+        c. Pre-order traversal
+        d. Level order traversal.
+    c. Implement for heap
+        a. Insert
+        b. Delete
+        c. Heap sort
+        d. Heapify
