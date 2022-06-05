@@ -96,7 +96,7 @@ const usingOneDArray = (items, sum) => {
 
     for (let i = 1; i <= items.length; i++) {
         mem[0] = true;
-        for (let j = 1; j <= sum; j++) {
+        for (let j = sum; j >= 1; j--) {
             if (items[i - 1] <= j)
                 mem[j] = mem[j] || mem[j - items[i - 1]];
         }
