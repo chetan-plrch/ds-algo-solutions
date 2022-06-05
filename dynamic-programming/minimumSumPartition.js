@@ -1,5 +1,5 @@
 const d = {
-    items: [5, 6, 6, 12, 8, 3, 6, 8, 9, 12, 3, 5]
+    items: [3, 2, 4, 3, 3, 4]
 }
 
 const minimumSumPartition = (items, sum, totalSum, index, results) => {
@@ -21,10 +21,7 @@ const minimumSumPartition = (items, sum, totalSum, index, results) => {
 const sum = d.items.reduce((acc, it) => acc + it, 0)
 // console.log(minimumSumPartition(d.items, sum, sum, 0, { output: Number.MAX_SAFE_INTEGER }));
 
-const memoization = new Array(d.items.length + 1).fill(false).map(() => {
-    return new Array(sum + 1).fill(false);
-});
-memoization.forEach((arr) => arr[0] = true);
+
 /**
  * sum      ->  0   1   2   3   4   5   6   7   8   9   10  11  12  13  14... 59
  * items    0   t   f   f   f   f   f   f   f   f   f   f   f   f   f   f   f
@@ -37,6 +34,10 @@ memoization.forEach((arr) => arr[0] = true);
  */
 const count = (items, sum) => {
     let min = Number.MAX_SAFE_INTEGER;
+    const memoization = new Array(d.items.length + 1).fill(false).map(() => {
+        return new Array(sum + 1).fill(false);
+    });
+    memoization.forEach((arr) => arr[0] = true);
     for(let i = 1; i <= items.length; i++) {
         for(let j = 1; j <= sum; j++) {
             if(items[i - 1] <= j) {
@@ -58,4 +59,56 @@ const count = (items, sum) => {
     return min;
 }
 
-console.log(count(d.items, sum));
+console.log('1st', count(d.items, sum));
+
+const count2 = (items, sum) => {
+    let min = Number.MAX_SAFE_INTEGER;
+    const mem = new Array(sum + 1).fill(false);
+    for(let i = 1; i <= items.length; i++) {
+        mem[0] = true;
+        for(let j = 1; j <= sum; j++) {
+            if(items[i - 1] <= j) {
+                mem[j] = mem[j - items[i - 1]] || mem[j];
+            }
+        }
+    }
+    console.log(mem);
+    for(let j = 0; j <= (sum/2); j++) {
+        const s1 = j, diff = Math.abs(2*j - sum);
+        if(mem[s1] && diff < min) {
+            min = diff;
+        }
+    }
+
+    return min;
+}
+
+console.log('2nd', count2(d.items, sum));
+
+/**
+ * input: [3, 2, 4, 1, 1]
+ * 
+ * sum ->       0   1   2   3   4   5   6   7   8   9   10  11
+ * items    0   
+ */
+const usingOneDArray = (items, sum) => {
+    const mem = new Array(sum + 1).fill(false);
+
+    for (let i = 1; i <= items.length; i++) {
+        mem[0] = true;
+        for (let j = 1; j <= sum; j++) {
+            if (items[i - 1] <= j)
+                mem[j] = mem[j] || mem[j - items[i - 1]];
+        }
+    }
+
+    console.log(mem);
+    let min = Number.MAX_SAFE_INTEGER;
+    for (let i = 0; i <= sum/2; i++) {
+        if(mem[i] === true)
+            min = Math.min(min, Math.abs(sum - (2*i)));
+    }
+    return min;
+}
+
+console.log('3rd', usingOneDArray(d.items, sum));
