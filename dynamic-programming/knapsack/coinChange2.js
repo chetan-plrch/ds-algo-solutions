@@ -40,15 +40,14 @@ const coinChange2Iterative = (coins, sum) => {
     const mem = new Array(coins.length + 1).fill(0).map(() => {
         return new Array(sum + 1).fill(0);
     })
-    mem.forEach((ar) => ar[0] = 1);
-    mem[0][0] = 0;
+    mem[0].map(() => Number.MAX_SAFE_INTEGER);
 
     for (let i = 1; i <= coins.length; i++) {
         for (let j = 1; j <= sum; j++) {
             if(coins[i - 1] <= j) {
                 mem[i][j] = Math.min(
-                    (j - coins[i - 1]) ? (1 + mem[i][j - coins[i - 1]]) : 1,
-                    g(mem[i - 1][j])
+                    1 + mem[i][j - coins[i - 1]],
+                    mem[i - 1][j]
                 );
             } else {
                 mem[i][j] = mem[i - 1][j];
